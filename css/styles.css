@@ -1,0 +1,735 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f9f9fb;
+  color: #0c0c0d;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  transition: background-image 0.5s ease-in-out;
+  position: relative;
+}
+
+/* Background overlay for better text visibility */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: -1;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.5s ease;
+}
+
+/* Only show overlay when background image is active */
+body.has-background::before {
+  opacity: 1;
+}
+
+/* Top Bar with Clock and Settings */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  z-index: 5;
+}
+
+/* Clock and Date Container */
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#clock {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #0c0c0d;
+}
+
+#date {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #737373;
+}
+
+/* Settings Button */
+.settings-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  color: #5a5a5a;
+}
+
+.settings-button:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  transform: scale(1.05);
+}
+
+.settings-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7% 2rem 2rem 2rem;
+  z-index: 1;
+}
+
+/* Logo Styles */
+.logo-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.user-logo {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 8px;
+  padding: 5px;
+  display: none; /* Hidden by default until loaded */
+  object-fit: contain; /* Ensures the logo maintains aspect ratio */
+  transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+/* Greeting Styles */
+.greeting-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#greeting {
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  color: #0c0c0d;
+  display: block; /* Changed from 'none' to 'block' */
+}
+
+/* Search Bar Styles */
+.search-container {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 2.5rem;
+}
+
+#search-form {
+  display: flex;
+  position: relative;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #0060df;
+  box-shadow: 0 0 0 3px rgba(0, 96, 223, 0.3);
+}
+
+#search-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5a5a5a;
+}
+
+/* Links Grid Styles */
+.links-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+#links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.link-row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.link-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.column-header {
+  display: block; /* Changed from 'none' to 'block' */
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #5a5a5a;
+}
+
+.column-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #0c0c0d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+}
+
+.column-header {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #5a5a5a;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #0c0c0d;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-size: 0.8rem;
+  height: 100px;
+  width: 100px;
+}
+
+.link-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.link-favicon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.75rem;
+  object-fit: contain;
+}
+
+.link-favicon-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #4285f4;
+}
+
+.link-title {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #5a5a5a;
+  margin-top: 0.25rem;
+}
+
+/* Replace the link-actions CSS in styles.css */
+.link-actions {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 5; /* Ensure actions appear above other content */
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #0c0c0d;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-size: 0.8rem;
+  height: 100px;
+  width: 100px;
+  position: relative; /* Add this to make absolute positioning work properly */
+}
+
+.link-card:hover .link-actions {
+  opacity: 1;
+}
+
+.edit-link, .delete-link {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: #5a5a5a;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.edit-link:hover, .delete-link:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.action-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+#add-link-button,
+#add-row-button,
+#manage-columns-button {
+  background-color: rgba(0, 96, 223, 0.1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  color: #0060df;
+}
+
+#add-link-button:hover,
+#add-row-button:hover,
+#manage-columns-button:hover {
+  background-color: rgba(0, 96, 223, 0.2);
+}
+
+.empty-state {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: #737373;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 12, 13, 0.7);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 450px;
+  color: #0c0c0d;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #737373;
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #0c0c0d;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #0c0c0d;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: #0060df;
+  box-shadow: 0 0 0 2px rgba(0, 96, 223, 0.2);
+}
+
+.modal-content button[type="submit"] {
+  background-color: #0060df;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: #0250bb;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.checkbox-group label {
+  display: inline;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+/* Logo upload styles */
+/* Make sure these styles are in your styles.css */
+.logo-preview-container {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.logo-preview {
+  max-width: 100%;
+  max-height: 100px;
+  display: none; /* Hidden by default */
+}
+
+.logo-placeholder {
+  font-size: 0.85rem;
+  color: #737373;
+}
+
+.user-logo {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 8px;
+  padding: 5px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.file-upload-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.file-upload-wrapper input[type="file"] {
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.remove-logo-button {
+  padding: 4px 8px;
+  margin-left: 10px;
+  background-color: #e01b24;
+  color: white;
+  font-size: 0.8rem;
+  width: auto;
+  white-space: nowrap;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-logo-button:hover {
+  background-color: #c01020;
+}
+
+.helper-text {
+  font-size: 0.75rem;
+  color: #737373;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* Add this to styles.css to style the remove row button with a reddish color */
+#remove-row-button {
+  background-color: rgba(229, 57, 53, 0.1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  color: #e53935;
+}
+
+#remove-row-button:hover {
+  background-color: rgba(229, 57, 53, 0.2);
+}
+
+/* Add these styles to styles.css */
+.quote-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  margin: 1rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #0c0c0d;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 0.7rem;
+  color: #5a5a5a;
+  font-weight: 500;
+  text-align: right;
+}
+
+.recent-activity {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+/* Add this to your styles.css file */
+.action-buttons-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.action-buttons-container button svg {
+  flex-shrink: 0;
+}
+
+/* Hide the empty state since we're now showing quotes */
+.empty-state {
+  display: none;
+}
+
+#export-links-button, #import-links-button {
+  background-color: rgba(0, 96, 223, 0.1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  color: #0060df;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#export-links-button:hover, #import-links-button:hover {
+  background-color: rgba(0, 96, 223, 0.2);
+}
+
+/* Add to styles.css */
+.buttons-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.secondary-button {
+  background-color: rgba(0, 96, 223, 0.1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  color: #0060df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.secondary-button:hover {
+  background-color: rgba(0, 96, 223, 0.2);
+}
+
+.secondary-button .icon {
+  font-size: 14px;
+}
+
+.form-section-header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5a5a5a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 1.5rem 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .link-row {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .link-row {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .link-card {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .link-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .link-card {
+    width: 90px;
+    height: 90px;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .link-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .container {
+    padding: 5% 1rem 1rem 1rem;
+  }
+  
+  .search-container {
+    margin-bottom: 1.5rem;
+  }
+}

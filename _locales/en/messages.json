@@ -1,0 +1,119 @@
+{
+    "extensionName": {
+      "message": "Cactus - Because it sticks",
+      "description": "Name of the extension"
+    },
+    "extensionDescription": {
+      "message": "The only new tab page that won't desert you! While other extensions wither away, Cactus stands tall, organizing your favorite sites with prickly precision. Get your daily dose of inspiration, customize your links just the way you like them, and never again feel lost in the digital desert of the internet.",
+      "description": "Description of the extension"
+    },
+    "morningGreeting": {
+      "message": "Good morning",
+      "description": "Morning greeting (5am-12pm)"
+    },
+    "afternoonGreeting": {
+      "message": "Good afternoon",
+      "description": "Afternoon greeting (12pm-6pm)"
+    },
+    "eveningGreeting": {
+      "message": "Good evening",
+      "description": "Evening greeting (6pm-5am)"
+    },
+    "searchPlaceholder": {
+      "message": "Search Google...",
+      "description": "Placeholder text for search box"
+    },
+    "addLinkButton": {
+      "message": "➕ Add New Link",
+      "description": "Text for the add link button"
+    },
+    "addLinkTitle": {
+      "message": "Add New Link",
+      "description": "Title for add link modal"
+    },
+    "editLinkTitle": {
+      "message": "Edit Link",
+      "description": "Title for edit link modal"
+    },
+    "linkTitleLabel": {
+      "message": "Title:",
+      "description": "Label for link title input"
+    },
+    "linkUrlLabel": {
+      "message": "URL:",
+      "description": "Label for link URL input"
+    },
+    "linkColumnLabel": {
+      "message": "Column:",
+      "description": "Label for link column selection"
+    },
+    "saveButton": {
+      "message": "Save",
+      "description": "Text for save button"
+    },
+    "cancelButton": {
+      "message": "Cancel",
+      "description": "Text for cancel button"
+    },
+    "settingsTitle": {
+      "message": "Settings",
+      "description": "Title for settings modal"
+    },
+    "nameLabel": {
+      "message": "Your Name:",
+      "description": "Label for name input in settings"
+    },
+    "categoryLabel": {
+      "message": "Unsplash Category:",
+      "description": "Label for Unsplash category input"
+    },
+    "deleteConfirmation": {
+      "message": "Are you sure you want to delete this link?",
+      "description": "Confirmation message when deleting a link"
+    },
+    "column1": {
+      "message": "Column 1",
+      "description": "Text for Column 1 option"
+    },
+    "column2": {
+      "message": "Column 2",
+      "description": "Text for Column 2 option"
+    },
+    "column3": {
+      "message": "Column 3",
+      "description": "Text for Column 3 option"
+    },
+    "addRowButton": {
+      "message": "📑 Add New Row",
+      "description": "Text for add row button"
+    },
+    "manageColumnsButton": {
+      "message": "📊 Manage Columns",
+      "description": "Text for manage columns button"
+    },
+    "manageColumnsTitle": {
+      "message": "Manage Columns",
+      "description": "Title for manage columns modal"
+    },
+    "columnNameLabel": {
+      "message": "Column Name:",
+      "description": "Label for column name input"
+    },
+    "saveColumnSettings": {
+      "message": "Save Column Settings",
+      "description": "Text for save column settings button"
+    },
+    "maxRowsReached": {
+      "message": "Maximum of 5 rows reached.",
+      "description": "Alert when maximum rows are reached"
+    }, 
+    "removeRowButton": {
+      "message": "🗑️ Remove Last Row",
+      "description": "Button text for removing the last row of links"
+    },
+    "cantRemoveLastRow": {
+      "message": "Cannot remove the last row.",
+      "description": "Error message shown when trying to remove the only remaining row"
+    }
+    
+  }

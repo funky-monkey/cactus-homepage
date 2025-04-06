@@ -1,0 +1,262 @@
+/* Popup Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  width: 300px;
+  padding: 1.5rem;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+h2 {
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #3367d6;
+}
+
+#status-message {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: none;
+}
+
+#status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+#status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+#status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+
+  .helper-text {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+  }
+  
+  .checkbox-group label {
+    display: inline;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Dropdown styling */
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none; /* Remove default styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23333' viewBox='0 0 16 16'><path d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 30px;
+}
+
+select:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-color: #4285f4;
+}
+
+select option {
+  background-color: white;
+  color: #333;
+  padding: 8px;
+}
+
+/* For Firefox */
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+/* For IE and Edge */
+select::-ms-expand {
+  display: none;
+}
+
+/* Add this to your popup.css file */
+
+.form-section-header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5a5a5a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 1.5rem 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Update existing form elements for Firefox style */
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #0c0c0d;
+}
+
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none; /* Remove default styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23333' viewBox='0 0 16 16'><path d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 30px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0060df;
+  box-shadow: 0 0 0 1px #0060df;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  accent-color: #0060df;
+}
+
+.checkbox-group label {
+  display: inline;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+/* Firefox-style buttons */
+.modal-content button[type="submit"] {
+  background-color: #0060df;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 400;
+  transition: background-color 0.2s;
+  width: 100%;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: #0050bc;
+}
+
+.remove-logo-button {
+  padding: 0.3rem 0.6rem;
+  margin-left: 10px;
+  background-color: rgba(12, 12, 13, 0.1);
+  color: #0c0c0d;
+  font-size: 0.8rem;
+  width: auto;
+  white-space: nowrap;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.remove-logo-button:hover {
+  background-color: rgba(12, 12, 13, 0.2);
+}

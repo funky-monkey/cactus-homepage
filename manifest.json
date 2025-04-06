@@ -1,0 +1,44 @@
+{
+    "manifest_version": 3,
+    "default_locale": "en",
+  
+    "name": "__MSG_extensionName__",
+    "version": "1.0.0",
+    "description": "__MSG_extensionDescription__",
+    "permissions": [
+      "storage",
+      "unlimitedStorage"
+    ],
+    "content_security_policy": {
+      "extension_pages": "default-src 'self'; img-src 'self' https://*.unsplash.com https://source.unsplash.com https://*.gstatic.com https://www.google.com https://images.unsplash.com https://picsum.photos https://* data:; connect-src 'self' https://source.unsplash.com https://api.unsplash.com https://*.unsplash.com https://picsum.photos https://qapi.vercel.app"
+    },
+    "web_accessible_resources": [{
+      "resources": ["backgrounds/*", "icons/*", "default-links.json"],
+      "matches": ["<all_urls>"]
+    }],
+    "chrome_url_overrides": {
+      "newtab": "newtab.html"
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "sidney.dekoning@gmail.com"
+      }
+    },
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "background": {
+      "scripts": ["js/background.js"]
+    },
+    "action": {
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      },
+      "default_title": "Personal New Tab",
+      "default_popup": "popup.html"
+    }
+  }

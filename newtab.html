@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <!-- Settings Button -->
+    <button id="settings-button" class="settings-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="12" cy="5" r="1"></circle>
+        <circle cx="12" cy="19" r="1"></circle>
+      </svg>
+    </button>
+    
+    <!-- Clock and Date -->
+    <div class="clock-container">
+      <div id="clock">00:00</div>
+      <div id="date">Loading date...</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <img id="user-logo" class="user-logo" src="" alt="Logo">
+    </div>
+    
+    <!-- Personal Greeting Section -->
+    <div class="greeting-container">
+      <h1 id="greeting">Hello!Hello!</h1>
+    </div>
+    
+    <!-- Search Section -->
+    <div class="search-container">
+      <form id="search-form" action="https://www.google.com/search" method="get">
+        <input type="text" id="search-input" name="q" data-i18n-placeholder="searchPlaceholder" placeholder="Search Google..." autocomplete="off">
+        <button type="submit" id="search-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+
+      <div class="recent-activity">
+        <div class="quote-container">
+          <div id="quote-text" class="quote-text">Loading inspiration...</div>
+          <div id="quote-author" class="quote-author"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Bookmarks/Links Section -->
+    <div class="links-container">
+      <!-- Links will be dynamically generated here -->
+      <div id="links-grid"></div>
+      
+      <!-- Add New Link & Row Buttons -->
+      <div class="action-buttons-container">
+        <button id="add-link-button" data-i18n="addLinkButton">
+          <span class="icon">➕</span> Add New Link
+        </button>
+        <button id="add-row-button" data-i18n="addRowButton">
+          <span class="icon">📑</span> Add New Row
+        </button>
+        <button id="manage-columns-button" data-i18n="manageColumnsButton">
+          <span class="icon">📊</span> Manage Columns
+        </button>
+        <button id="remove-row-button" data-i18n="removeRowButton">
+          <span class="icon">🗑️</span> Remove Last Row
+        </button>
+      </div>
+    </div>
+    <div class="recent-activity"></div>
+  </div>
+  
+  <!-- Add Link Modal -->
+  <div id="add-link-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 data-i18n="addLinkTitle">Add New Link</h2>
+      <form id="add-link-form">
+        <div class="form-group">
+          <label for="link-title" data-i18n="linkTitleLabel">Title:</label>
+          <input type="text" id="link-title" required>
+        </div>
+        <div class="form-group">
+          <label for="link-url" data-i18n="linkUrlLabel">URL:</label>
+          <input type="url" id="link-url" required placeholder="https://example.com">
+        </div>
+        <div class="form-group">
+          <label for="link-row">Row:</label>
+          <select id="link-row">
+            <option value="1">Row 1</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="link-column" data-i18n="linkColumnLabel">Column:</label>
+          <select id="link-column">
+            <option value="1" data-i18n="column1">Column 1</option>
+            <option value="2" data-i18n="column2">Column 2</option>
+            <option value="3" data-i18n="column3">Column 3</option>
+            <option value="4" data-i18n="column4">Column 4</option>
+            <option value="5" data-i18n="column5">Column 5</option>
+            <option value="6" data-i18n="column6">Column 6</option>
+            <option value="7" data-i18n="column7">Column 7</option>
+            <option value="8" data-i18n="column8">Column 8</option>
+          </select>
+        </div>
+        <button type="submit" data-i18n="saveButton">Save</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 data-i18n="settingsTitle">Settings</h2>
+      <form id="settings-form">
+        
+        <div class="form-section-header">Links Management</div>
+        <div class="form-group buttons-group">
+          <button type="button" id="export-links-button" class="secondary-button">
+            <span class="icon">🔄</span> Export Links
+          </button>
+          <button type="button" id="import-links-button" class="secondary-button">
+            <span class="icon">📂</span> Import Links
+          </button>
+        </div>
+        
+        <div class="form-group">
+          <label for="logo-upload">Upload Logo:</label>
+          <div class="logo-preview-container">
+            <img id="logo-preview" class="logo-preview" src="" alt="Logo Preview">
+            <div id="logo-placeholder" class="logo-placeholder">No logo uploaded</div>
+          </div>
+          <div class="file-upload-wrapper">
+            <input type="file" id="logo-upload" accept="image/*">
+            <button type="button" id="remove-logo-button" class="remove-logo-button">Remove</button>
+          </div>
+          <div class="helper-text">Note: If popup closes when selecting a file, click the extension icon again to continue.</div>
+        </div>
+        <button type="submit" data-i18n="saveButton">Save Settings</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Manage Columns Modal -->
+  <div id="manage-columns-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 data-i18n="manageColumnsTitle">Manage Columns</h2>
+      <form id="manage-columns-form">
+        <div id="column-names-container">
+          <div class="form-group">
+            <label for="column-name-1" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="1">Column 1 Name:</label>
+            <input type="text" id="column-name-1" placeholder="e.g., Work">
+          </div>
+          <div class="form-group">
+            <label for="column-name-2" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="2">Column 2 Name:</label>
+            <input type="text" id="column-name-2" placeholder="e.g., Social">
+          </div>
+          <div class="form-group">
+            <label for="column-name-3" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="3">Column 3 Name:</label>
+            <input type="text" id="column-name-3" placeholder="e.g., Tools">
+          </div>
+          <div class="form-group">
+            <label for="column-name-4" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="4">Column 4 Name:</label>
+            <input type="text" id="column-name-4" placeholder="e.g., News">
+          </div>
+          <div class="form-group">
+            <label for="column-name-5" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="5">Column 5 Name:</label>
+            <input type="text" id="column-name-5" placeholder="e.g., Entertainment">
+          </div>
+          <div class="form-group">
+            <label for="column-name-6" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="6">Column 6 Name:</label>
+            <input type="text" id="column-name-6" placeholder="e.g., Shopping">
+          </div>
+          <div class="form-group">
+            <label for="column-name-7" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="7">Column 7 Name:</label>
+            <input type="text" id="column-name-7" placeholder="e.g., Reference">
+          </div>
+          <div class="form-group">
+            <label for="column-name-8" data-i18n-suffix="columnNameLabel" data-i18n-suffix-num="8">Column 8 Name:</label>
+            <input type="text" id="column-name-8" placeholder="e.g., Personal">
+          </div>
+        </div>
+        <button type="submit" data-i18n="saveColumnSettings">Save Column Settings</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/newtab.js"></script>
+</body>
+</html>
