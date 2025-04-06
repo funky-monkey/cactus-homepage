@@ -1,4 +1,4 @@
-# Personal New Tab Extension - Deployment Guide
+# Cactus Homepage Extension - Deployment Guide
 
 This guide will help you build and install your custom new tab extension for both Chrome and Firefox browsers.
 

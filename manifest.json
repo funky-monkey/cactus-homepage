@@ -38,7 +38,8 @@
         "48": "icons/icon48.png",
         "128": "icons/icon128.png"
       },
-      "default_title": "Personal New Tab",
+      "default_title": "__MSG_extensionName__",
       "default_popup": "popup.html"
+      
     }
   }

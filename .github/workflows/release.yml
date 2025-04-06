@@ -1,0 +1,69 @@
+name: Create Browser Extension Releases
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    
+    - name: Install web-ext
+      run: npm install -g web-ext
+    
+    - name: Extract version
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+    
+    - name: Prepare Chrome Build
+      run: |
+        # Create a Chrome-specific manifest
+        cp manifest.json manifest.chrome.json
+        # Modify manifest for Chrome if needed
+        # For example, remove Firefox-specific settings
+        jq 'del(.browser_specific_settings)' manifest.chrome.json > manifest.json
+        
+        # Create Chrome build directory
+        mkdir -p chrome-build
+        cp -r *.html *.css js icons _locales backgrounds chrome-build/
+        mv manifest.json chrome-build/
+        
+        # ZIP Chrome extension
+        cd chrome-build
+        zip -r ../cactus-chrome-${{ steps.get_version.outputs.VERSION }}.zip .
+        cd ..
+    
+    - name: Prepare Firefox Build
+      run: |
+        # Restore original manifest with Firefox settings
+        cp manifest.chrome.json manifest.json
+        
+        # Create Firefox build directory
+        mkdir -p firefox-build
+        cp -r *.html *.css js icons _locales backgrounds firefox-build/
+        mv manifest.json firefox-build/
+        
+        # Use web-ext to build Firefox extension
+        cd firefox-build
+        web-ext build --filename=cactus-firefox-${{ steps.get_version.outputs.VERSION }}.zip
+        mv web-ext-artifacts/*.zip ../
+        cd ..
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          cactus-chrome-${{ steps.get_version.outputs.VERSION }}.zip
+          cactus-firefox-${{ steps.get_version.outputs.VERSION }}.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

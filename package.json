@@ -1,0 +1,20 @@
+{
+  "name": "cactus-newtab",
+  "version": "1.0.0",
+  "description": "A customizable new tab page extension",
+  "scripts": {
+    "build:firefox": "web-ext build",
+    "test:firefox": "web-ext run",
+    "lint": "web-ext lint"
+  },
+  "keywords": [
+    "browser-extension",
+    "new-tab",
+    "productivity"
+  ],
+  "author": "Sidney De Koning",
+  "license": "MIT",
+  "devDependencies": {
+    "web-ext": "^7.6.2"
+  }
+}

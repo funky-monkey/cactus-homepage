@@ -1,5 +1,5 @@
 /**
- * Background script for the Personal New Tab extension
+ * Background script for the Cactus Homepage extension
  * This script runs in the background and handles events not tied to the new tab page
  */
 
